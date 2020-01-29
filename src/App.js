@@ -4,8 +4,10 @@ import Typography from '@material-ui/core/Typography';
 import { green } from '@material-ui/core/colors';
 import Router from './routes';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'
+import store from './redux/store'
 
-
+//const store = createStore(reducers,{});
 const useStyles = theme => ({
   root: {
     padding: theme.spacing(1),
@@ -24,10 +26,12 @@ const useStyles = theme => ({
 class App extends React.Component {  
   render(){
     const { classes } = this.props;
-    return (      
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
+    return (
+      <Provider store={ store }>
+        <BrowserRouter>
+            <Router />
+        </BrowserRouter>
+      </Provider>   
     );
   }
 }

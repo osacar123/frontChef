@@ -1,6 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -15,6 +13,7 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { withStyles } from '@material-ui/core/styles';
+import {  Link } from 'react-router-dom';
 
 
 
@@ -71,6 +70,10 @@ const useStyles = theme => ({
     const status = this.state.status;
     status != 'dislike' ? this.setState({status:'dislike'}): this.setState({status:''})
   }
+  viewDetail = () =>{
+    //this.props.history.push("/otro/");
+    
+  }
   render(){
   const { classes } = this.props;
   
@@ -83,9 +86,16 @@ const useStyles = theme => ({
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings">
-            <VisibilityIcon />
-          </IconButton>
+          <Link to={{
+            pathname: '/detail/',
+            params: {
+              id: this.props.item.id
+            }
+          }}>
+            <IconButton onClick={this.viewDetail} aria-label="settings">
+              <VisibilityIcon />
+            </IconButton>
+          </Link>
         }
         title={this.props.item.name}
         subheader={this.props.item.publisher}
@@ -96,9 +106,7 @@ const useStyles = theme => ({
         title="Paella dish"
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {this.props.item.info}
-        </Typography>
+        
       </CardContent>
       <CardActions disableSpacing>
         <IconButton onClick={this._handlerLike}  aria-label="add to favorites">
@@ -106,7 +114,8 @@ const useStyles = theme => ({
         </IconButton>
         <IconButton onClick={this._handlerDislike} aria-label="share">
           <ThumbDownIcon style={{color:this.state.status==='dislike'?'#f00':''}} />
-        </IconButton>        
+        </IconButton>
+        
       </CardActions>
       
     </Card>

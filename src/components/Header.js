@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import HeroCard from '../../components/HeroCard'
+
 
 
 const useStyles = theme => ({
@@ -9,7 +9,10 @@ const useStyles = theme => ({
     padding: theme.spacing(1),
     justifyContent: 'space-around',
     display: 'flex',
-    flexWrap: 'wrap',   
+    flexWrap: 'wrap',
+    height:200,
+    backgroundColor:'#f00'
+      
   },
 
 });
@@ -20,16 +23,9 @@ class Header extends React.Component {
         const { classes } = this.props;
     
         return (
-            <div className={classes.root}>
-            <HeroCard />
-            <HeroCard />
-            <HeroCard />
-            <HeroCard />
-            <HeroCard />
-            <HeroCard />
-            <HeroCard />
-            
-        </div>
+            <div style={{}}className={classes.root}>
+                
+            </div>
         );
     }
 }
