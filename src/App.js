@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import { green } from '@material-ui/core/colors';
+import Router from './routes';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const useStyles = theme => ({
+  root: {
+    padding: theme.spacing(1),
+    [theme.breakpoints.down('sm')]: {
+      backgroundColor: '#f0f',
+    },
+    [theme.breakpoints.up('lg')]: {
+      backgroundColor: theme.palette.primary.main,
+    },
+    [theme.breakpoints.up('xl')]: {
+      backgroundColor: green[500],
+    },
+  },
+});
+
+class App extends React.Component {  
+  render(){
+    const { classes } = this.props;
+    return (      
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    );
+  }
 }
 
-export default App;
+export default withStyles(useStyles)(App);
