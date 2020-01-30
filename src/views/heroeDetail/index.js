@@ -17,18 +17,40 @@ import StarIcon from '@material-ui/icons/Star';
 
 const useStyles = theme => ({
     card: {
-        display: 'flex',
+        
+        
         height:500,
-        maxWidth:800
+        maxWidth:800,
+        [theme.breakpoints.up('lg')]: {
+            display:'flex',
+            width:800,
+            height:500,
+        },
+        [theme.breakpoints.down('md')]: {
+            width:500,
+            height:600,
+        },    
+        [theme.breakpoints.down('sm')]: {
+            display:'block',
+            width:300,
+            height:600,
+        },
         
       },
       details: {
         display: 'flex',
         flexDirection: 'column',
         height:'100%',
-        //
-        
-               
+        [theme.breakpoints.up('lg')]: {
+            height:'100%',
+        },
+        [theme.breakpoints.down('md')]: {
+            height:'100%',
+        },    
+        [theme.breakpoints.down('sm')]: {
+            height:'40%',
+        }
+    
       },
       content: {
         flex: '1 0 auto',
@@ -36,7 +58,19 @@ const useStyles = theme => ({
       },
       cover: {
         width: 600,
-        margin:10
+        margin:10,
+        [theme.breakpoints.up('lg')]: {
+            width: 400,
+            height:800
+        },
+        [theme.breakpoints.down('md')]: {
+            width:400,
+            height:400
+        },    
+        [theme.breakpoints.down('sm')]: {
+            width:280,
+            height:300
+        },
       },
       controls: {
         display: 'flex',
