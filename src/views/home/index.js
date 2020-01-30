@@ -25,6 +25,7 @@ class Home extends React.Component {
     this.state = {
       data:[],
       page:1,
+      
     }
     this._handleListHeroes(this.state.page);
   }
@@ -43,12 +44,13 @@ class Home extends React.Component {
     })
   }
   _renderList = () => {
-    const data = this.state.data;
-    return data.map((i,n)=>{
+    const data = this.state.data;    
+    return data.map((i,n)=>{      
       return(<HeroCard item={i} />)
     })
   }
   _next = () => {
+    
     if (this.state.to !== this.state.count){
     const page = this.state.page;
     this._handleListHeroes(this.state.page+1);
@@ -62,6 +64,7 @@ class Home extends React.Component {
     this.setState({page:page-1})
     }
   }
+ 
 
   render(){
     

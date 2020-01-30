@@ -3,13 +3,15 @@ import { Route, Switch} from 'react-router-dom';
 import Home from './views/home'
 import Header from './components/Header'
 import HeroeDetail from './views/heroeDetail'
+import Ranking from './views/ranking'
 
 const wrappedRoutes = () => (
         
       <div className="container__wrap">
         <Header />
-        <Route path="/home/" component={Home} />
-        <Route path="/detail/" component={HeroeDetail} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/detail/" component={HeroeDetail} />
+        <Route exact path="/ranking/" component={Ranking} />
       </div>
 );
 

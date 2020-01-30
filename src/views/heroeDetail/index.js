@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
-import { detail } from '../../services/api';
+import { detail, updateVote } from '../../services/api';
 import StarIcon from '@material-ui/icons/Star';
 
 
@@ -75,7 +75,23 @@ class HeroeDetail extends React.Component {
             this.setState({error_msj:'hay un error'})
             this.setState({error:true})
         })
-      }
+    }
+
+    _handleUpScore = () => {
+        var data = this.state.data
+        data.votes++;
+        updateVote(this.props.location.params.id,data.votes)
+        //detail(1)
+        .then( res=> {
+            console.log(res.data)
+            this.setState({data:data})           
+        })
+        .catch((error)=> {
+            console.log(error.response)
+            this.setState({error_msj:'hay un error'})
+            this.setState({error:true})
+        })
+    }
     
     render(){
         console.log(this.state)
@@ -102,12 +118,12 @@ class HeroeDetail extends React.Component {
                             </Typography>
                         </CardContent>
                         <div className={classes.controls}>                        
-                            <IconButton aria-label="play/pause">
+                            <IconButton onClick={this._handleUpScore} aria-label="play/pause">
                                 <StarIcon className={classes.playIcon} />
                             </IconButton>
 
-                        <Typography component="h5" variant="h5">
-                                10
+                            <Typography component="h5" variant="h5">
+                                {this.state.data.votes}
                             </Typography>
                         </div>
                     </div>
